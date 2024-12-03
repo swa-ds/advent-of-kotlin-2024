@@ -1,6 +1,8 @@
 import java.io.File
 
 fun main() {
+    // join all lines to a single one, because "." does not match newline characters
+    // (it would however, if Regex was created with RegexOption.DOT_MATCHES_ALL)
     var input = File("input.txt").readLines().joinToString("")
     var sum = calc(input)
 
