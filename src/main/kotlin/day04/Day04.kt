@@ -39,9 +39,26 @@ fun countWordOccurrences(grid: Array<String>): Int {
     return count
 }
 
-fun main() {
+fun countXmasOccurrences(grid: Array<String>): Int {
+    var occurrences = 0
+    for (row in 1 until grid.size - 1) {
+        for (col in 1 until grid[row].length - 1) {
+            if (grid[row][col] == 'A' &&
+                (grid[row-1][col-1] == 'M' && grid[row+1][col+1] == 'S'
+                    || grid[row-1][col-1] == 'S' && grid[row+1][col+1] == 'M') &&
+                (grid[row-1][col+1] == 'M' && grid[row+1][col-1] == 'S'
+                        || grid[row-1][col+1] == 'S' && grid[row+1][col-1] == 'M')
+                ) {
+                    occurrences++
+            }
+        }
+    }
+    return occurrences
+}
 
+fun main() {
     val grid = File("input.txt").readLines().toTypedArray()
 
     println("Part 1: ${countWordOccurrences(grid)}")
+    println("Part 2: ${countXmasOccurrences(grid)}")
 }
