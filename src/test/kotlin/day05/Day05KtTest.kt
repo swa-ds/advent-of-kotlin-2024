@@ -38,7 +38,11 @@ class Day05KtTest {
 
     @Test
     fun part1() {
-        assertEquals(143, calculateMiddlePagesSum(input))
+        assertEquals(143, solvePart1(getRulesMap(input), day05.getPagesList(input)))
+    }
+
+    fun part2() {
+        assertEquals(123, solvePart2(getRulesMap(input), day05.getPagesList(input)))
     }
 
     @Test
