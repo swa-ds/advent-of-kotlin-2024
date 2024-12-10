@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class Day05KtTest {
-    val input = """
+    private val input = """
 47|53
 97|13
 97|61
@@ -33,7 +33,8 @@ class Day05KtTest {
 75,97,47,61,53
 61,13,29
 97,13,75,29,47
-    """.trimIndent().split('\n')
+    """.trimIndent()
+        .split("\n")
 
     @Test
     fun part1() {
@@ -41,10 +42,22 @@ class Day05KtTest {
     }
 
     @Test
-    fun test() {
-        val strings = "5,3,2"
-        val intsList = strings.split(",").map { it.toInt() }
-            .toList()
-        println(intsList)
+    fun getPagesList() {
+        val pagesList = getPagesList(input)
+        val exp = listOf(
+            listOf(75,47,61,53,29),
+            listOf(97,61,53,29,13),
+            listOf(75,29,13),
+            listOf(75,97,47,61,53),
+            listOf(61,13,29),
+            listOf(97,13,75,29,47),
+        )
+        assertEquals(exp, pagesList)
+    }
+
+    @Test
+    fun middlePage() {
+        assertEquals(2, getMiddlePage(listOf(1, 2, 3)))
+        assertEquals(3, getMiddlePage(listOf(1, 2, 3, 4, 5)))
     }
 }
