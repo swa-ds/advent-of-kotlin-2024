@@ -5,6 +5,7 @@ import java.io.File
 private fun toIntsList(it: String) = it.split(",").map { it.toInt() }.toList()
 
 fun List<Int>.tail(): List<Int> = this.subList(1, this.size)
+fun List<Int>.middlePage(): Int = this[this.size / 2]
 
 fun calculateMiddlePagesSum(input: List<String>): Int {
 
@@ -25,15 +26,10 @@ fun calculateMiddlePagesSum(input: List<String>): Int {
 
     val sum = pagesList
         .filter { inCorrectOrder(it) }
-        .map { getMiddlePage(it) }
+        .map { it.middlePage() }
         .sum()
 
     return sum
-}
-
-fun getMiddlePage(pages: List<Int>): Int {
-//    println(pages)
-    return pages[pages.size / 2]
 }
 
 fun getRulesMap(input: List<String>): Map<Int, List<Int>> {

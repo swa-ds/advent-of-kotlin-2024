@@ -45,19 +45,19 @@ class Day05KtTest {
     fun getPagesList() {
         val pagesList = getPagesList(input)
         val exp = listOf(
-            listOf(75,47,61,53,29),
-            listOf(97,61,53,29,13),
-            listOf(75,29,13),
-            listOf(75,97,47,61,53),
-            listOf(61,13,29),
-            listOf(97,13,75,29,47),
+            listOf(75, 47, 61, 53, 29),
+            listOf(97, 61, 53, 29, 13),
+            listOf(75, 29, 13),
+            listOf(75, 97, 47, 61, 53),
+            listOf(61, 13, 29),
+            listOf(97, 13, 75, 29, 47),
         )
         assertEquals(exp, pagesList)
     }
 
     @Test
     fun middlePage() {
-        assertEquals(2, getMiddlePage(listOf(1, 2, 3)))
-        assertEquals(3, getMiddlePage(listOf(1, 2, 3, 4, 5)))
+        assertEquals(2, listOf(1, 2, 3).middlePage())
+        assertEquals(3, listOf(1, 2, 3, 4, 5).middlePage())
     }
 }
