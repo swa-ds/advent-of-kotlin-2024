@@ -4,6 +4,8 @@ import java.io.File
 
 private fun toIntsList(it: String) = it.split(",").map { it.toInt() }.toList()
 
+fun List<Int>.tail(): List<Int> = this.subList(1, this.size)
+
 fun calculateMiddlePagesSum(input: List<String>): Int {
 
     val rulesMap = getRulesMap(input)
@@ -13,14 +15,12 @@ fun calculateMiddlePagesSum(input: List<String>): Int {
         if (pages.size <= 1) {
             return true
         }
-        val first = pages.first()
-        val rest = pages.subList(1, pages.size)
-        for (p in rest) {
-            if (rulesMap[p]?.contains(first) == true) {
-                return false
-            }
+        val head = pages.first()
+        val tail = pages.tail()
+        if (tail.any { rulesMap[it]?.contains(head) == true }) {
+            return false
         }
-        return inCorrectOrder(rest)
+        return inCorrectOrder(tail)
     }
 
     val sum = pagesList
